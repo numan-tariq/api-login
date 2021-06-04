@@ -7,5 +7,5 @@ function endPoint(address, type, testData) {
 }
 
 module.exports = endPoints = {
-  login: new endPoint('/user/login', 'POST', login),
+  login: new endPoint('/api/user/login', 'POST', login),
 };

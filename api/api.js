@@ -6,15 +6,27 @@ const api = (endPoint, data) => {
   switch(endPoint.type) {
     case 'POST':
       return axiosPOST(endPoint);
+    case 'GET':
+      return axiosGET(endPoint);
     default:
       break;
   }
 };
 
 const axiosPOST = async ({ address, data, testData }) => {
-  console.log('[ADDRESS]', address);
+  console.log('[ADDRESS] POST', address);
   if (enviornment.mock) if (testData) return await mockApi(testData);
-  return await Axios.post(address, data);
+  return await Axios.post(
+    route, data
+  );
+}
+
+const axiosGET = async ( { address, data, testData }) => {
+  console.log('[ADDRESS] GET', address);
+  if (enviornment.mock) if (testData) return await mockApi(testData);
+  return await Axios.get(
+      route + (data ? data : ""),
+    );
 }
 
 const mockApi = (data) => {
