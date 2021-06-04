@@ -13,16 +13,16 @@ const api = (endPoint, data) => {
   }
 };
 
-const axiosPOST = async ({ address, data, testData }) => {
-  console.log('[ADDRESS] POST', address);
+const axiosPOST = async ({ address: route, data, testData }) => {
+  console.log('[ADDRESS] POST', route);
   if (enviornment.mock) if (testData) return await mockApi(testData);
   return await Axios.post(
     route, data
   );
 }
 
-const axiosGET = async ( { address, data, testData }) => {
-  console.log('[ADDRESS] GET', address);
+const axiosGET = async ( { address: route, data, testData }) => {
+  console.log('[ADDRESS] GET', route);
   if (enviornment.mock) if (testData) return await mockApi(testData);
   return await Axios.get(
       route + (data ? data : ""),
